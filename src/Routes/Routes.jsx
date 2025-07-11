@@ -8,12 +8,14 @@ import Secrete from "../pages/shared/Secrete/Secrete";
 import PrivateRoute from "./privateRoute";
 import Dashboard from "../Layout/Dashboard";
 import Cart from "../pages/Dashboard/Cart/Cart";
+import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
+import Additems from "../pages/Dashboard/AddItems/Additems";
+import AdminRoute from "./AdminRoute";
+
 import {
     createBrowserRouter,
     
   } from "react-router-dom";
-import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
-import Additems from "../pages/Dashboard/AddItems/Additems";
 
 
 
@@ -52,17 +54,20 @@ export const router = createBrowserRouter([
     path:'dashboard',
     element:<PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     children: [
+      // normal user routes 
       {
         path:'cart',
         element: <Cart></Cart>
       },
+
+      // admin only routes 
       {
         path: 'addItems',
         element: <Additems></Additems>
       },
       {
         path: 'users',
-        element: <AllUsers></AllUsers>
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
       }
     ]
   }
