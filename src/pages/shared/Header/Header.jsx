@@ -4,11 +4,12 @@ import { AuthContext } from "../../../Providers/AuthProviders";
 import { FaShoppingCart } from "react-icons/fa";
 import useCart from "../../../hooks/useCart";
 import Swal from "sweetalert2";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext);
   const [cart] = useCart();
-
+ const [isAdmin] = useAdmin();
   const handleLogOut = () => {
     logOut()
       .then(() => {
@@ -43,9 +44,19 @@ const Header = () => {
       <li>
         <Link to="/signup">Sign Up</Link>
       </li>
-      <li>
-        <Link to="/secrete">Secrete</Link>
+
+      {
+        user && isAdmin &&  <li>
+        <Link to="/dashboard/adminHome">Admin Dash</Link>
       </li>
+      }
+        
+      {
+       user && !isAdmin &&  <li>
+        <Link to="/dashboard/userHome">User Dash</Link>
+      </li>
+      }
+     
       <li>
         <Link to="/dashboard/cart">
           <button className="flex items-center gap-2">

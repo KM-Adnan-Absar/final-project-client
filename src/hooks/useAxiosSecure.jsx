@@ -41,7 +41,8 @@ const useAxiosSecure = () => {
           await logOut();
           navigate('/login');
         }
-      } else {
+      }
+       else {
         console.error('Network or unexpected error:', error.message);
       }
 
