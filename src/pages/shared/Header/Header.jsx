@@ -46,7 +46,8 @@ const Header = () => {
         <Link to="/dashboard/adminHome">Admin Dashboard</Link>
       </li>
       }
-        
+        {/* admin info for log in:
+         {name: 'user', email: 'user@gmail.com', password: 'Km1234$$'} */}
       {
        user && !isAdmin &&  <li>
         <Link to="/dashboard/userHome">User Dashboard</Link>

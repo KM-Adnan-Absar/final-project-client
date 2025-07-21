@@ -35,7 +35,7 @@ const {data: payments = []} = useQuery({
       <tr key = {payment._id}>
         <th>{idx + 1}</th>
         <td>{payment.price}</td>
-        <td>{payment.transactionId}</td>
+        <td>{payment.transectionId}</td>
         <td>{payment.status}</td>
       </tr>)
       }

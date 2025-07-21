@@ -21,7 +21,7 @@ const ManageItems = () => {
             if (result.isConfirmed) {
                 const res = await axiosSecure.delete(`/menu/${item._id}`)
                 console.log(res.data);
-                if (res.data.delatedCount > 0) {
+                if (res.data.deletedCount > 0) {
                     refetch()
                     Swal.fire({
                         position: "top-end",
