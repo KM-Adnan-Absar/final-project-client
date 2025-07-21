@@ -22,6 +22,8 @@ import Payment from "../pages/Dashboard/Payment";
 import PaymentHistory from "../pages/PaymentHistory";
 import UserHome from "../pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../pages/Dashboard/AdminHome/AdminHome";
+import Contact from "../pages/contact/Contact";
+import Error from "../pages/Error";
 
 
 
@@ -29,6 +31,8 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <Error></Error>,
+
     children:[
         {
         path: '/',
@@ -41,6 +45,10 @@ export const router = createBrowserRouter([
         {
           path:'/shop/:category',
           element:<Order></Order>
+        },
+        {
+          path: '/contact',
+          element: <Contact></Contact>
         },
         {
           path:'/login',
@@ -65,6 +73,7 @@ export const router = createBrowserRouter([
       {
         path:'userHome',
         element: <UserHome></UserHome>
+        
       },
       {
         path:'cart',
@@ -95,7 +104,7 @@ export const router = createBrowserRouter([
       {
         path:'updateItem/:id',
         element: <UpdateItem></UpdateItem>,
-        loader: ({params})=>fetch(`http://localhost:5000/menu/${params.id}`)
+        loader: ({params})=>fetch(`http://localhost:3000/menu/${params.id}`)
       },
       {
         path: 'users',

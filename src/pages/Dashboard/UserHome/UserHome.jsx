@@ -5,8 +5,9 @@ const UserHome = () => {
     const {user} = useAuth()
     return (
        <div>
-            <h2>
-                <span>Hi , Welcome</span>
+            <h2 className="text-3xl font-bold text-center mt-6 uppercase">
+                <span>Hi , Welcome </span>
+
                 {
                     user?.displayName ? user?.displayName : 'Back'
                 }

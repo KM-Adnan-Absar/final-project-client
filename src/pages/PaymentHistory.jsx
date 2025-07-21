@@ -17,8 +17,8 @@ const {data: payments = []} = useQuery({
 
     return (
         <div>
-            <h2> Total payment</h2>
-            <div className="overflow-x-auto">
+            <h2 className="text-3xl font-bold text-center"> Total Payment</h2>
+            <div className="overflow-x-auto mt-8 ml-12">
   <table className="table">
     {/* head */}
     <thead>
@@ -32,7 +32,7 @@ const {data: payments = []} = useQuery({
     <tbody>
       {
         payments.map((payment , idx) => 
-      <tr key = {payment.id}>
+      <tr key = {payment._id}>
         <th>{idx + 1}</th>
         <td>{payment.price}</td>
         <td>{payment.transactionId}</td>

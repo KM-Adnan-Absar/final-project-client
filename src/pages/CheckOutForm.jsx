@@ -4,10 +4,12 @@ import useAxiosSecure from "../hooks/useAxiosSecure";
 import useCart from "../hooks/useCart";
 import useAuth from "../hooks/useAuth";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const CheckOutForm = () => {
 const [error , setError] = useState('')
 const [transectionId , setTransectionId] = useState('')
+const navigate = useNavigate()
 const {user} = useAuth()
 const [clientSecret , setClientSecret] = useState('')
     const stripe = useStripe();
@@ -77,21 +79,25 @@ useEffect( ()=> {
                     price: totalPrice,
                     transectionId: paymentIntent.id,
                     date: new Date(),
-                    cartId: cart.map(item => item._id ),
-                    menuItemId: cart.map( item => item.menuId ),
+                    cartIds: cart.map(item => item._id ),
+                    menuItemIds: cart.map( item => item.menuId ),
                     status: 'pending'   
                 }
 const res = await axiosSecure.post('/payments', payment)
 console.log('payment saved', res.data);
 refetch();
+
 if(res.data?.paymentResult?.insertedId){
+    
 Swal.fire({
   position: "top-end",
   icon: "success",
-  title: "Your work has been saved",
+  title: "Payment Successful",
   showConfirmButton: false,
   timer: 1500
 });
+  
+navigate('/dashboard/paymentHistory')
 }
             }
         }

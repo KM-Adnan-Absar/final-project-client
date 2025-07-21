@@ -29,34 +29,32 @@ const Header = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/contact">Contact Us</Link>
-      </li>
-      <li>
+      
+      {/* <li>
         <Link to="/dashboard">Dashboard</Link>
-      </li>
+      </li> */}
       <li>
         <Link to="/menu">Our Menu</Link>
       </li>
       <li>
         <Link to="/shop/salad">Our Shop</Link>
       </li>
-      <li>
-        <Link to="/signup">Sign Up</Link>
-      </li>
+     
 
       {
         user && isAdmin &&  <li>
-        <Link to="/dashboard/adminHome">Admin Dash</Link>
+        <Link to="/dashboard/adminHome">Admin Dashboard</Link>
       </li>
       }
         
       {
        user && !isAdmin &&  <li>
-        <Link to="/dashboard/userHome">User Dash</Link>
+        <Link to="/dashboard/userHome">User Dashboard</Link>
       </li>
       }
-     
+     <li>
+        <Link to="/contact">Contact Us</Link>
+      </li>
       <li>
         <Link to="/dashboard/cart">
           <button className="flex items-center gap-2">
@@ -66,10 +64,14 @@ const Header = () => {
         </Link>
       </li>
 
+       <li>
+        <Link to="/signup">Sign Up</Link>
+      </li>
+
       {/* Conditional rendering for authenticated user */}
       {user ? (
         <>
-          <span className="mr-4">Welcome, {user?.displayName}</span>
+          <span className="mr-4">Welcome, {user.displayName}</span>
           <button onClick={handleLogOut} className="btn btn-ghost">
             LogOut
           </button>
@@ -85,7 +87,7 @@ const Header = () => {
   );
 
   return (
-    <div className="navbar fixed z-10 bg-opacity-30 bg-black text-white max-w-screen-lg mx-auto">
+    <div className="navbar fixed z-10 bg-opacity-30 bg-black text-white max-w-screen-xl mx-auto">
       <div className="navbar-start">
         <div className="dropdown">
           <div
@@ -111,7 +113,7 @@ const Header = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            className="menu menu-sm dropdown-content bg-slate-400  rounded-box z-[1] mt-3 w-36 p-2 shadow"
           >
             {links}
           </ul>
@@ -123,11 +125,7 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
-        <Link to="/some-page" className="btn">
-          Button
-        </Link>
-      </div>
+      
     </div>
   );
 };
